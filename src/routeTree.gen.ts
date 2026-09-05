@@ -19,6 +19,7 @@ import { Route as AdminDesignationsRouteImport } from './routes/admin.designatio
 import { Route as AdminEmployeesRouteImport } from './routes/admin.employees'
 import { Route as AdminLeavesRouteImport } from './routes/admin.leaves'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as AdminSalaryStructureRouteImport } from './routes/admin.salary-structure'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -70,6 +71,11 @@ const AdminLoginRoute = AdminLoginRouteImport.update({
   path: '/admin/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminSalaryStructureRoute = AdminSalaryStructureRouteImport.update({
+  id: '/admin/salary-structure',
+  path: '/admin/salary-structure',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -82,6 +88,7 @@ export interface FileRoutesByFullPath {
   '/admin/employees': typeof AdminEmployeesRoute
   '/admin/leaves': typeof AdminLeavesRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/salary-structure': typeof AdminSalaryStructureRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -94,6 +101,7 @@ export interface FileRoutesByTo {
   '/admin/employees': typeof AdminEmployeesRoute
   '/admin/leaves': typeof AdminLeavesRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/salary-structure': typeof AdminSalaryStructureRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -107,6 +115,7 @@ export interface FileRoutesById {
   '/admin/employees': typeof AdminEmployeesRoute
   '/admin/leaves': typeof AdminLeavesRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/salary-structure': typeof AdminSalaryStructureRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -121,6 +130,7 @@ export interface FileRouteTypes {
     | '/admin/employees'
     | '/admin/leaves'
     | '/admin/login'
+    | '/admin/salary-structure'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -133,6 +143,7 @@ export interface FileRouteTypes {
     | '/admin/employees'
     | '/admin/leaves'
     | '/admin/login'
+    | '/admin/salary-structure'
   id:
     | '__root__'
     | '/'
@@ -145,6 +156,7 @@ export interface FileRouteTypes {
     | '/admin/employees'
     | '/admin/leaves'
     | '/admin/login'
+    | '/admin/salary-structure'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -158,6 +170,7 @@ export interface RootRouteChildren {
   AdminEmployeesRoute: typeof AdminEmployeesRoute
   AdminLeavesRoute: typeof AdminLeavesRoute
   AdminLoginRoute: typeof AdminLoginRoute
+  AdminSalaryStructureRoute: typeof AdminSalaryStructureRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -232,6 +245,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/salary-structure': {
+      id: '/admin/salary-structure'
+      path: '/admin/salary-structure'
+      fullPath: '/admin/salary-structure'
+      preLoaderRoute: typeof AdminSalaryStructureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -246,6 +266,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminEmployeesRoute: AdminEmployeesRoute,
   AdminLeavesRoute: AdminLeavesRoute,
   AdminLoginRoute: AdminLoginRoute,
+  AdminSalaryStructureRoute: AdminSalaryStructureRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
