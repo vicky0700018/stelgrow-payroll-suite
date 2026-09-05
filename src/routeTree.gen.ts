@@ -15,6 +15,7 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as AdminAttendanceRouteImport } from './routes/admin.attendance'
 import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
 import { Route as AdminDepartmentsRouteImport } from './routes/admin.departments'
+import { Route as AdminDesignationsRouteImport } from './routes/admin.designations'
 import { Route as AdminEmployeesRouteImport } from './routes/admin.employees'
 import { Route as AdminLeavesRouteImport } from './routes/admin.leaves'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
@@ -49,6 +50,11 @@ const AdminDepartmentsRoute = AdminDepartmentsRouteImport.update({
   path: '/admin/departments',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminDesignationsRoute = AdminDesignationsRouteImport.update({
+  id: '/admin/designations',
+  path: '/admin/designations',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminEmployeesRoute = AdminEmployeesRouteImport.update({
   id: '/admin/employees',
   path: '/admin/employees',
@@ -72,6 +78,7 @@ export interface FileRoutesByFullPath {
   '/admin/attendance': typeof AdminAttendanceRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/departments': typeof AdminDepartmentsRoute
+  '/admin/designations': typeof AdminDesignationsRoute
   '/admin/employees': typeof AdminEmployeesRoute
   '/admin/leaves': typeof AdminLeavesRoute
   '/admin/login': typeof AdminLoginRoute
@@ -83,6 +90,7 @@ export interface FileRoutesByTo {
   '/admin/attendance': typeof AdminAttendanceRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/departments': typeof AdminDepartmentsRoute
+  '/admin/designations': typeof AdminDesignationsRoute
   '/admin/employees': typeof AdminEmployeesRoute
   '/admin/leaves': typeof AdminLeavesRoute
   '/admin/login': typeof AdminLoginRoute
@@ -95,6 +103,7 @@ export interface FileRoutesById {
   '/admin/attendance': typeof AdminAttendanceRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/departments': typeof AdminDepartmentsRoute
+  '/admin/designations': typeof AdminDesignationsRoute
   '/admin/employees': typeof AdminEmployeesRoute
   '/admin/leaves': typeof AdminLeavesRoute
   '/admin/login': typeof AdminLoginRoute
@@ -108,6 +117,7 @@ export interface FileRouteTypes {
     | '/admin/attendance'
     | '/admin/dashboard'
     | '/admin/departments'
+    | '/admin/designations'
     | '/admin/employees'
     | '/admin/leaves'
     | '/admin/login'
@@ -119,6 +129,7 @@ export interface FileRouteTypes {
     | '/admin/attendance'
     | '/admin/dashboard'
     | '/admin/departments'
+    | '/admin/designations'
     | '/admin/employees'
     | '/admin/leaves'
     | '/admin/login'
@@ -130,6 +141,7 @@ export interface FileRouteTypes {
     | '/admin/attendance'
     | '/admin/dashboard'
     | '/admin/departments'
+    | '/admin/designations'
     | '/admin/employees'
     | '/admin/leaves'
     | '/admin/login'
@@ -142,6 +154,7 @@ export interface RootRouteChildren {
   AdminAttendanceRoute: typeof AdminAttendanceRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminDepartmentsRoute: typeof AdminDepartmentsRoute
+  AdminDesignationsRoute: typeof AdminDesignationsRoute
   AdminEmployeesRoute: typeof AdminEmployeesRoute
   AdminLeavesRoute: typeof AdminLeavesRoute
   AdminLoginRoute: typeof AdminLoginRoute
@@ -191,6 +204,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminDepartmentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/designations': {
+      id: '/admin/designations'
+      path: '/admin/designations'
+      fullPath: '/admin/designations'
+      preLoaderRoute: typeof AdminDesignationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/employees': {
       id: '/admin/employees'
       path: '/admin/employees'
@@ -222,6 +242,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminAttendanceRoute: AdminAttendanceRoute,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminDepartmentsRoute: AdminDepartmentsRoute,
+  AdminDesignationsRoute: AdminDesignationsRoute,
   AdminEmployeesRoute: AdminEmployeesRoute,
   AdminLeavesRoute: AdminLeavesRoute,
   AdminLoginRoute: AdminLoginRoute,
