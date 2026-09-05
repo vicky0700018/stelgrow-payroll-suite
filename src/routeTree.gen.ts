@@ -19,6 +19,7 @@ import { Route as AdminDesignationsRouteImport } from './routes/admin.designatio
 import { Route as AdminEmployeesRouteImport } from './routes/admin.employees'
 import { Route as AdminLeavesRouteImport } from './routes/admin.leaves'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as AdminPayrollRouteImport } from './routes/admin.payroll'
 import { Route as AdminSalaryComponentsRouteImport } from './routes/admin.salary-components'
 import { Route as AdminSalaryStructureRouteImport } from './routes/admin.salary-structure'
 
@@ -72,6 +73,11 @@ const AdminLoginRoute = AdminLoginRouteImport.update({
   path: '/admin/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminPayrollRoute = AdminPayrollRouteImport.update({
+  id: '/admin/payroll',
+  path: '/admin/payroll',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminSalaryComponentsRoute = AdminSalaryComponentsRouteImport.update({
   id: '/admin/salary-components',
   path: '/admin/salary-components',
@@ -94,6 +100,7 @@ export interface FileRoutesByFullPath {
   '/admin/employees': typeof AdminEmployeesRoute
   '/admin/leaves': typeof AdminLeavesRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/payroll': typeof AdminPayrollRoute
   '/admin/salary-components': typeof AdminSalaryComponentsRoute
   '/admin/salary-structure': typeof AdminSalaryStructureRoute
 }
@@ -108,6 +115,7 @@ export interface FileRoutesByTo {
   '/admin/employees': typeof AdminEmployeesRoute
   '/admin/leaves': typeof AdminLeavesRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/payroll': typeof AdminPayrollRoute
   '/admin/salary-components': typeof AdminSalaryComponentsRoute
   '/admin/salary-structure': typeof AdminSalaryStructureRoute
 }
@@ -123,6 +131,7 @@ export interface FileRoutesById {
   '/admin/employees': typeof AdminEmployeesRoute
   '/admin/leaves': typeof AdminLeavesRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/payroll': typeof AdminPayrollRoute
   '/admin/salary-components': typeof AdminSalaryComponentsRoute
   '/admin/salary-structure': typeof AdminSalaryStructureRoute
 }
@@ -139,6 +148,7 @@ export interface FileRouteTypes {
     | '/admin/employees'
     | '/admin/leaves'
     | '/admin/login'
+    | '/admin/payroll'
     | '/admin/salary-components'
     | '/admin/salary-structure'
   fileRoutesByTo: FileRoutesByTo
@@ -153,6 +163,7 @@ export interface FileRouteTypes {
     | '/admin/employees'
     | '/admin/leaves'
     | '/admin/login'
+    | '/admin/payroll'
     | '/admin/salary-components'
     | '/admin/salary-structure'
   id:
@@ -167,6 +178,7 @@ export interface FileRouteTypes {
     | '/admin/employees'
     | '/admin/leaves'
     | '/admin/login'
+    | '/admin/payroll'
     | '/admin/salary-components'
     | '/admin/salary-structure'
   fileRoutesById: FileRoutesById
@@ -182,6 +194,7 @@ export interface RootRouteChildren {
   AdminEmployeesRoute: typeof AdminEmployeesRoute
   AdminLeavesRoute: typeof AdminLeavesRoute
   AdminLoginRoute: typeof AdminLoginRoute
+  AdminPayrollRoute: typeof AdminPayrollRoute
   AdminSalaryComponentsRoute: typeof AdminSalaryComponentsRoute
   AdminSalaryStructureRoute: typeof AdminSalaryStructureRoute
 }
@@ -258,6 +271,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/payroll': {
+      id: '/admin/payroll'
+      path: '/admin/payroll'
+      fullPath: '/admin/payroll'
+      preLoaderRoute: typeof AdminPayrollRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/salary-components': {
       id: '/admin/salary-components'
       path: '/admin/salary-components'
@@ -286,6 +306,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminEmployeesRoute: AdminEmployeesRoute,
   AdminLeavesRoute: AdminLeavesRoute,
   AdminLoginRoute: AdminLoginRoute,
+  AdminPayrollRoute: AdminPayrollRoute,
   AdminSalaryComponentsRoute: AdminSalaryComponentsRoute,
   AdminSalaryStructureRoute: AdminSalaryStructureRoute,
 }
