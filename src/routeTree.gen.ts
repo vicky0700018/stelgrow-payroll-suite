@@ -19,6 +19,7 @@ import { Route as AdminDesignationsRouteImport } from './routes/admin.designatio
 import { Route as AdminEmployeesRouteImport } from './routes/admin.employees'
 import { Route as AdminLeavesRouteImport } from './routes/admin.leaves'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as AdminSalaryComponentsRouteImport } from './routes/admin.salary-components'
 import { Route as AdminSalaryStructureRouteImport } from './routes/admin.salary-structure'
 
 const IndexRoute = IndexRouteImport.update({
@@ -71,6 +72,11 @@ const AdminLoginRoute = AdminLoginRouteImport.update({
   path: '/admin/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminSalaryComponentsRoute = AdminSalaryComponentsRouteImport.update({
+  id: '/admin/salary-components',
+  path: '/admin/salary-components',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminSalaryStructureRoute = AdminSalaryStructureRouteImport.update({
   id: '/admin/salary-structure',
   path: '/admin/salary-structure',
@@ -88,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/admin/employees': typeof AdminEmployeesRoute
   '/admin/leaves': typeof AdminLeavesRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/salary-components': typeof AdminSalaryComponentsRoute
   '/admin/salary-structure': typeof AdminSalaryStructureRoute
 }
 export interface FileRoutesByTo {
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/admin/employees': typeof AdminEmployeesRoute
   '/admin/leaves': typeof AdminLeavesRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/salary-components': typeof AdminSalaryComponentsRoute
   '/admin/salary-structure': typeof AdminSalaryStructureRoute
 }
 export interface FileRoutesById {
@@ -115,6 +123,7 @@ export interface FileRoutesById {
   '/admin/employees': typeof AdminEmployeesRoute
   '/admin/leaves': typeof AdminLeavesRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/salary-components': typeof AdminSalaryComponentsRoute
   '/admin/salary-structure': typeof AdminSalaryStructureRoute
 }
 export interface FileRouteTypes {
@@ -130,6 +139,7 @@ export interface FileRouteTypes {
     | '/admin/employees'
     | '/admin/leaves'
     | '/admin/login'
+    | '/admin/salary-components'
     | '/admin/salary-structure'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -143,6 +153,7 @@ export interface FileRouteTypes {
     | '/admin/employees'
     | '/admin/leaves'
     | '/admin/login'
+    | '/admin/salary-components'
     | '/admin/salary-structure'
   id:
     | '__root__'
@@ -156,6 +167,7 @@ export interface FileRouteTypes {
     | '/admin/employees'
     | '/admin/leaves'
     | '/admin/login'
+    | '/admin/salary-components'
     | '/admin/salary-structure'
   fileRoutesById: FileRoutesById
 }
@@ -170,6 +182,7 @@ export interface RootRouteChildren {
   AdminEmployeesRoute: typeof AdminEmployeesRoute
   AdminLeavesRoute: typeof AdminLeavesRoute
   AdminLoginRoute: typeof AdminLoginRoute
+  AdminSalaryComponentsRoute: typeof AdminSalaryComponentsRoute
   AdminSalaryStructureRoute: typeof AdminSalaryStructureRoute
 }
 
@@ -245,6 +258,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/salary-components': {
+      id: '/admin/salary-components'
+      path: '/admin/salary-components'
+      fullPath: '/admin/salary-components'
+      preLoaderRoute: typeof AdminSalaryComponentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/salary-structure': {
       id: '/admin/salary-structure'
       path: '/admin/salary-structure'
@@ -266,6 +286,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminEmployeesRoute: AdminEmployeesRoute,
   AdminLeavesRoute: AdminLeavesRoute,
   AdminLoginRoute: AdminLoginRoute,
+  AdminSalaryComponentsRoute: AdminSalaryComponentsRoute,
   AdminSalaryStructureRoute: AdminSalaryStructureRoute,
 }
 export const routeTree = rootRouteImport
