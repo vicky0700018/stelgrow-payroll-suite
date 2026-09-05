@@ -14,6 +14,7 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as AdminAttendanceRouteImport } from './routes/admin.attendance'
 import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
+import { Route as AdminDepartmentsRouteImport } from './routes/admin.departments'
 import { Route as AdminEmployeesRouteImport } from './routes/admin.employees'
 import { Route as AdminLeavesRouteImport } from './routes/admin.leaves'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
@@ -43,6 +44,11 @@ const AdminDashboardRoute = AdminDashboardRouteImport.update({
   path: '/admin/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminDepartmentsRoute = AdminDepartmentsRouteImport.update({
+  id: '/admin/departments',
+  path: '/admin/departments',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminEmployeesRoute = AdminEmployeesRouteImport.update({
   id: '/admin/employees',
   path: '/admin/employees',
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/admin/attendance': typeof AdminAttendanceRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/departments': typeof AdminDepartmentsRoute
   '/admin/employees': typeof AdminEmployeesRoute
   '/admin/leaves': typeof AdminLeavesRoute
   '/admin/login': typeof AdminLoginRoute
@@ -75,6 +82,7 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/admin/attendance': typeof AdminAttendanceRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/departments': typeof AdminDepartmentsRoute
   '/admin/employees': typeof AdminEmployeesRoute
   '/admin/leaves': typeof AdminLeavesRoute
   '/admin/login': typeof AdminLoginRoute
@@ -86,6 +94,7 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/admin/attendance': typeof AdminAttendanceRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/departments': typeof AdminDepartmentsRoute
   '/admin/employees': typeof AdminEmployeesRoute
   '/admin/leaves': typeof AdminLeavesRoute
   '/admin/login': typeof AdminLoginRoute
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/admin/attendance'
     | '/admin/dashboard'
+    | '/admin/departments'
     | '/admin/employees'
     | '/admin/leaves'
     | '/admin/login'
@@ -108,6 +118,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/admin/attendance'
     | '/admin/dashboard'
+    | '/admin/departments'
     | '/admin/employees'
     | '/admin/leaves'
     | '/admin/login'
@@ -118,6 +129,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/admin/attendance'
     | '/admin/dashboard'
+    | '/admin/departments'
     | '/admin/employees'
     | '/admin/leaves'
     | '/admin/login'
@@ -129,6 +141,7 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   AdminAttendanceRoute: typeof AdminAttendanceRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminDepartmentsRoute: typeof AdminDepartmentsRoute
   AdminEmployeesRoute: typeof AdminEmployeesRoute
   AdminLeavesRoute: typeof AdminLeavesRoute
   AdminLoginRoute: typeof AdminLoginRoute
@@ -171,6 +184,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminDashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/departments': {
+      id: '/admin/departments'
+      path: '/admin/departments'
+      fullPath: '/admin/departments'
+      preLoaderRoute: typeof AdminDepartmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/employees': {
       id: '/admin/employees'
       path: '/admin/employees'
@@ -201,6 +221,7 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   AdminAttendanceRoute: AdminAttendanceRoute,
   AdminDashboardRoute: AdminDashboardRoute,
+  AdminDepartmentsRoute: AdminDepartmentsRoute,
   AdminEmployeesRoute: AdminEmployeesRoute,
   AdminLeavesRoute: AdminLeavesRoute,
   AdminLoginRoute: AdminLoginRoute,
